@@ -18,9 +18,7 @@ import static junit.framework.Assert.assertEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @ContextConfiguration(locations = {"classpath:/hibernate.cfg.xml"})
-
-public class SpringHibernateApplicationTests {
-
+public class WheelTests {
 
 
 	@Mock

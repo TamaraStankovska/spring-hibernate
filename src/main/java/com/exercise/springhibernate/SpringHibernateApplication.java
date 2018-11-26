@@ -107,8 +107,5 @@ public class SpringHibernateApplication implements CommandLineRunner {
         Car car5 = carDao.getTypeByName("Opel");
         logger.info(car5.getType());
 
-
-
-
     }
 }
