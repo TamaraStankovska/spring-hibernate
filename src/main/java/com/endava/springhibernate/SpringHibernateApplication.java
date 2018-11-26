@@ -54,7 +54,7 @@ public class SpringHibernateApplication implements CommandLineRunner {
 
 
         // new list of wheels for a car
-        List<Wheel> wheels=new ArrayList<>();
+        List<Wheel> wheels=new ArrayList<>(4);
         wheels.add(wheel);
         wheels.add(wheel2);
         wheels.add(wheel3);
@@ -76,7 +76,7 @@ public class SpringHibernateApplication implements CommandLineRunner {
         Wheel winterWheel4=new Wheel("winter-wheel-4");
         wheelDao.save(winterWheel4);
 
-        List<Wheel> winterWheels=new ArrayList<>();
+        List<Wheel> winterWheels=new ArrayList<>(4);
         winterWheels.add(winterWheel);
         winterWheels.add(winterWheel2);
         winterWheels.add(winterWheel3);
