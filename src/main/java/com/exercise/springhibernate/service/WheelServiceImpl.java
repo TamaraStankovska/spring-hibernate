@@ -1,8 +1,8 @@
-package com.endava.springhibernate.service;
+package com.exercise.springhibernate.service;
 
 
-import com.endava.springhibernate.dao.WheelDao;
-import com.endava.springhibernate.model.Wheel;
+import com.exercise.springhibernate.dao.WheelDao;
+import com.exercise.springhibernate.model.Wheel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +32,20 @@ public class WheelServiceImpl implements WheelService{
     @Override
     public void delete(Wheel wheel) {
             wheelDao.delete(wheel);
+    }
+
+    @Override
+    public void persist(Wheel wheel) {
+        wheelDao.persist(wheel);
+    }
+
+    @Override
+    public Wheel get(Long id) {
+        return wheelDao.get(id);
+    }
+
+    @Override
+    public Wheel load(Long id) {
+        return wheelDao.load(id);
     }
 }

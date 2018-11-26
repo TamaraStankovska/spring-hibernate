@@ -1,4 +1,4 @@
-package com.endava.springhibernate.model;
+package com.exercise.springhibernate.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

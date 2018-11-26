@@ -1,7 +1,7 @@
-package com.endava.springhibernate.service;
+package com.exercise.springhibernate.service;
 
-import com.endava.springhibernate.dao.CarDao;
-import com.endava.springhibernate.model.Car;
+import com.exercise.springhibernate.dao.CarDao;
+import com.exercise.springhibernate.model.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +51,10 @@ public class CarServiceImpl implements CarService {
     @Override
     public Car load(Long id) {
         return carDao.load(id);
+    }
+
+    @Override
+    public Car getTypeByName(String name) {
+       return carDao.getTypeByName(name);
     }
 }

@@ -1,8 +1,6 @@
-package com.endava.springhibernate.service;
+package com.exercise.springhibernate.service;
 
-import com.endava.springhibernate.model.Car;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+import com.exercise.springhibernate.model.Car;
 
 import java.util.List;
 
@@ -14,5 +12,6 @@ public interface CarService {
     void persist(Car car);
     Car get(Long id);
     Car load(Long id);
+    Car getTypeByName(String name);
 
 }

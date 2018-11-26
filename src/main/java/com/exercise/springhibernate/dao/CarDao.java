@@ -1,6 +1,6 @@
-package com.endava.springhibernate.dao;
+package com.exercise.springhibernate.dao;
 
-import com.endava.springhibernate.model.Car;
+import com.exercise.springhibernate.model.Car;
 
 import java.util.List;
 public interface CarDao {
@@ -11,4 +11,8 @@ public interface CarDao {
     void persist(Car car);
     Car get(Long id);
     Car load(Long id);
+    Car getTypeByName(String name);
+
+
+
 }

@@ -1,7 +1,6 @@
-package com.endava.springhibernate.dao;
+package com.exercise.springhibernate.dao;
 
-import com.endava.springhibernate.model.Car;
-import org.hibernate.Criteria;
+import com.exercise.springhibernate.model.Wheel;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,46 +10,36 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
+
 @Repository
-public class CarDaoImpl implements CarDao {
+public class WheelDaoImpl implements WheelDao {
 
     @Autowired
     private SessionFactory sessionFactory;
-
     @Override
-    public List<Car> findAll() {
-        Session session=sessionFactory.openSession();
-
+    public List<Wheel> findAll() {
+        Session session = sessionFactory.openSession();
         CriteriaBuilder builder=session.getCriteriaBuilder();
 
-        CriteriaQuery<Car> criteriaQuery=builder.createQuery(Car.class);
+        CriteriaQuery<Wheel> criteriaQuery=builder.createQuery(Wheel.class);
 
 
-        criteriaQuery.from(Car.class);
+        criteriaQuery.from(Wheel.class);
 
 
-        List<Car> cars=session.createQuery(criteriaQuery).getResultList();
+        List<Wheel> wheels=session.createQuery(criteriaQuery).getResultList();
         session.close();
 
-        return cars;
+        return wheels;
     }
 
     @Override
-    public Car findById(Long id) {
-
+    public void save(Wheel wheel) {
         Session session=sessionFactory.openSession();
-        Car car=session.get(Car.class,id);
-        Hibernate.initialize(car.getId());
-        session.close();
-        return car;
-    }
 
-    @Override
-    public void save(Car car) {
-        Session session=sessionFactory.openSession();
         session.beginTransaction();
 
-        session.saveOrUpdate(car);
+        session.saveOrUpdate(wheel);
 
         session.getTransaction().commit();
 
@@ -59,47 +48,62 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public void delete(Car car) {
-
+    public void delete(Wheel wheel) {
         Session session=sessionFactory.openSession();
+
         session.beginTransaction();
-        session.delete(car);
+
+        session.delete(wheel);
 
         session.getTransaction().commit();
+
+        session.close();
+
+
+    }
+
+    @Override
+    public Wheel findById(Long id) {
+        Session session=sessionFactory.openSession();
+        Wheel wheel=session.get(Wheel.class,id);
+        Hibernate.initialize(wheel.getId());
+        session.close();
+        return wheel;
+    }
+
+    @Override
+    public void persist(Wheel wheel) {
+
+        Session session=sessionFactory.openSession();
+
+        session.beginTransaction();
+
+        session.persist(wheel);
+
+        session.getTransaction().commit();
+
         session.close();
 
     }
 
     @Override
-    public void persist(Car car) {  Session session=sessionFactory.openSession();
+    public Wheel get(Long id) {
+        Session session=sessionFactory.openSession();
         session.beginTransaction();
-
-        session.persist(car);
+        Wheel wheel= session.get(Wheel.class, id);
 
         session.getTransaction().commit();
-
         session.close();
-
+        return wheel;
     }
 
     @Override
-    public Car get(Long id) {
-
+    public Wheel load(Long id) {
         Session session=sessionFactory.openSession();
         session.beginTransaction();
-        Car car = session.get(Car.class, id);
+        Wheel wheel= session.load(Wheel.class, id);
 
         session.getTransaction().commit();
         session.close();
-        return car;
-    }
-
-    @Override
-    public Car load(Long id) {
-        Session session=sessionFactory.openSession();
-        session.beginTransaction();
-        Car car = session.load(Car.class,id);
-        session.getTransaction().commit();
-        session.close();
-        return car;    }
+        return wheel;    }
 }

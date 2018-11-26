@@ -1,15 +1,9 @@
-package com.endava.springhibernate;
+package com.exercise.springhibernate;
 
-import com.endava.springhibernate.dao.CarDao;
-import com.endava.springhibernate.dao.WheelDao;
-import com.endava.springhibernate.model.Car;
-import com.endava.springhibernate.model.Wheel;
-import com.endava.springhibernate.service.CarService;
-import com.endava.springhibernate.service.CarServiceImpl;
-import com.endava.springhibernate.service.WheelService;
-import com.endava.springhibernate.service.WheelServiceImpl;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import com.exercise.springhibernate.dao.CarDao;
+import com.exercise.springhibernate.dao.WheelDao;
+import com.exercise.springhibernate.model.Car;
+import com.exercise.springhibernate.model.Wheel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +79,8 @@ public class SpringHibernateApplication implements CommandLineRunner {
         logger.info("New Car with Winter Wheels");
         Car car2=new Car("Opel","Corsa");
         car.setWheels(winterWheels);
-        carDao.save(car2);
+            carDao.save(car2);
+
 
 
 
@@ -98,40 +93,21 @@ public class SpringHibernateApplication implements CommandLineRunner {
 
         logger.info("Get a Car from the database");
         carDao.get(1L);
+        logger.info(carDao.get(1L).getName());
 
         logger.info("Load a Car from the database");
         carDao.load(2L);
+        logger.info(carDao.load(2L).getName());
 
 
 
-//			Wheel wheel=new Wheel();
-//			wheel.setName("1");
-//			wheelService.save(wheel);
-//
-//			Wheel wheel2=new Wheel();
-//			wheel2.setName("2");
-//			wheelService.save(wheel2);
-//
-//			Wheel wheel3=new Wheel();
-//			wheel3.setName("3");
-//			wheelService.save(wheel3);
-//
-//			Wheel wheel4=new Wheel();
-//			wheel4.setName("4");
-//			wheelService.save(wheel4);
-//
-//
-//			List<Wheel> wheels=new ArrayList<>();
-//			wheels.add(wheel);
-//			wheels.add(wheel2);
-//			wheels.add(wheel3);
-//			wheels.add(wheel4);
-//
-//
-//
-//			Car car=new Car("Renault","Clio");
-//			car.setWheels(wheels);
-//			carService.save(car);
+        logger.info("Criteria:");
+        carDao.getTypeByName("Opel");
+
+        Car car5 = carDao.getTypeByName("Opel");
+        logger.info(car5.getType());
+
+
 
 
     }
