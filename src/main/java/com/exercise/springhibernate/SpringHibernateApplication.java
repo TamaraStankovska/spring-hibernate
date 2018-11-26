@@ -12,6 +12,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,9 @@ public class SpringHibernateApplication implements CommandLineRunner {
 
     @Autowired
     private CarDao carDao;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
 
     Logger logger= LoggerFactory.getLogger(this.getClass());
@@ -106,6 +111,10 @@ public class SpringHibernateApplication implements CommandLineRunner {
 
         Car car5 = carDao.getTypeByName("Opel");
         logger.info(car5.getType());
+
+
+
+
 
     }
 }
