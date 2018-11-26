@@ -25,6 +25,26 @@ public class Car {
 
     String type;
 
+    public Car(String name, String type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Wheel> getWheels() {
+        return wheels;
+    }
+
+    public void setWheels(List<Wheel> wheels) {
+        this.wheels = wheels;
+    }
 
     @OneToMany(targetEntity=Wheel.class, fetch=FetchType.EAGER)
     private List<Wheel> wheels;

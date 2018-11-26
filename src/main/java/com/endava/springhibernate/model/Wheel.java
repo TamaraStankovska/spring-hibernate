@@ -20,5 +20,7 @@ public class Wheel {
 
     String name;
 
-
+    public Wheel(String name) {
+        this.name = name;
+    }
 }

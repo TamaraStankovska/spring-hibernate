@@ -1,8 +1,10 @@
 package com.endava.springhibernate.dao;
 
 import com.endava.springhibernate.model.Wheel;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 
 public interface WheelDao {
     List<Wheel> findAll();

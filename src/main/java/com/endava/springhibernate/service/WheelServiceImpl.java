@@ -4,9 +4,10 @@ package com.endava.springhibernate.service;
 import com.endava.springhibernate.dao.WheelDao;
 import com.endava.springhibernate.model.Wheel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class WheelServiceImpl implements WheelService{
 
     @Autowired
