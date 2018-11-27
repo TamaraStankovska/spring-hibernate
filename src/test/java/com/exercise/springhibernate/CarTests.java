@@ -100,6 +100,17 @@ public class CarTests{
     }
 
 
+    @Test
+    public void mergeCar(){
+        Car car = new Car("Opel","Corsaxx");
+        carService.save(car);
+        car.setName("NewName");
+        carService.mergeCar(car);
+
+        Assert.assertEquals(car.getName(),"NewName");
+    }
+
+
 
 
 
