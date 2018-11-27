@@ -13,4 +13,5 @@ public interface WheelDao {
     void persist(Wheel wheel);
     Wheel get(Long id);
     Wheel load(Long id);
+
 }

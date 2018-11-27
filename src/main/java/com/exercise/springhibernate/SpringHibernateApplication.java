@@ -114,6 +114,12 @@ public class SpringHibernateApplication implements CommandLineRunner {
 
 
 
+        logger.info("Merge a object");
+        Car newCar= carDao.mergeCar(new Car("Opel","New Model"));
+        logger.info(newCar.getName());
+
+
+
 
 
     }

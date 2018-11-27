@@ -13,5 +13,7 @@ public interface CarService {
     Car get(Long id);
     Car load(Long id);
     Car getTypeByName(String name);
+    Car mergeCar(Car car);
+
 
 }

@@ -57,4 +57,9 @@ public class CarServiceImpl implements CarService {
     public Car getTypeByName(String name) {
        return carDao.getTypeByName(name);
     }
+
+    @Override
+    public Car mergeCar(Car car) {
+        return  carDao.mergeCar(car);
+    }
 }

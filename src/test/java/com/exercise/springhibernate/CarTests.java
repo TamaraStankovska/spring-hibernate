@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.ArrayList;
@@ -32,10 +33,6 @@ public class CarTests{
 
     @Mock
     WheelServiceImpl wheelService;
-
-
-    @Mock
-    SessionFactory sessionFactory;
 
 
 
@@ -64,9 +61,36 @@ public class CarTests{
         carService.save(car);
 
         Assert.assertEquals(car.getId(),carService.get(car.getId()));
+        System.out.println(car);
     }
 
 
+    @Test
+    public void persistCar(){
+        Wheel wheel=new Wheel("1-persist");
+        Wheel wheel2=new Wheel("2-persist");
+        Wheel wheel3=new Wheel("3-persist");
+        Wheel wheel4=new Wheel("4-persist");
+        wheelService.save(wheel);
+        wheelService.save(wheel2);
+        wheelService.save(wheel3);
+        wheelService.save(wheel4);
+
+
+        List<Wheel> wheels=new ArrayList<>();
+        wheels.add(wheel);
+        wheels.add(wheel2);
+        wheels.add(wheel3);
+        wheels.add(wheel4);
+
+        Car car=new Car("Opel","Sth");
+        car.setWheels(wheels);
+        carService.persist(car);
+
+        Assert.assertEquals(car.getId(),carService.get(car.getId()));
+        System.out.println(car);
+
+    }
     @Test
     public void deleteCar(){
         Car car=carService.get(1L);
@@ -77,18 +101,7 @@ public class CarTests{
 
 
 
-    @Test
-    public void persistCar(){
-        Car car = new Car();
-        car.setName("Nesto");
-        Session session=sessionFactory.openSession();
-        session.beginTransaction();
-        session.persist(car);
 
-        session.getTransaction().commit();
-        session.close();
-        System.out.println(car.getId());
-    }
 
 
 

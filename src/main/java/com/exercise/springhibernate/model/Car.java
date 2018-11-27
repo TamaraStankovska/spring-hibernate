@@ -48,4 +48,14 @@ public class Car {
 
     @OneToMany(targetEntity=Wheel.class, fetch=FetchType.EAGER)
     private List<Wheel> wheels;
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", wheels=" + wheels +
+                '}';
+    }
 }

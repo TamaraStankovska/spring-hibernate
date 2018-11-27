@@ -119,8 +119,19 @@ public class CarDaoImpl implements CarDao {
             return result;
         }
 
+    @Override
+    public Car mergeCar(Car car) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        car.setName("NewName");
+        session.save(car);
+        Car newCar = (Car) session.merge(car);
+        session.getTransaction().commit();
+        session.close();
+        return car;
+    }
 
 
-        }
+}
 
 

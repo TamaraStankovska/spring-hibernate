@@ -2,10 +2,12 @@ package com.exercise.springhibernate;
 
 import com.exercise.springhibernate.model.Wheel;
 import com.exercise.springhibernate.service.WheelServiceImpl;
+import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -23,6 +25,9 @@ public class WheelTests {
 
 	@Mock
 	WheelServiceImpl wheelService;
+
+	@Autowired
+	SessionFactory sessionFactory;
 
 
 	@Test
@@ -55,7 +60,10 @@ public class WheelTests {
 	public void loadWheel(){
 		Wheel wheel=wheelService.load(2L);
 		Assert.assertEquals(wheel,wheelService.load(2L));
+
 	}
+
+
 
 
 
