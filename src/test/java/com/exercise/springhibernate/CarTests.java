@@ -4,6 +4,8 @@ import com.exercise.springhibernate.model.Car;
 import com.exercise.springhibernate.model.Wheel;
 import com.exercise.springhibernate.service.CarServiceImpl;
 import com.exercise.springhibernate.service.WheelServiceImpl;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +32,10 @@ public class CarTests{
 
     @Mock
     WheelServiceImpl wheelService;
+
+
+    @Mock
+    SessionFactory sessionFactory;
 
 
 
@@ -67,6 +73,21 @@ public class CarTests{
         carService.delete(car);
 
         Assert.assertNull(car);
+    }
+
+
+
+    @Test
+    public void persistCar(){
+        Car car = new Car();
+        car.setName("Nesto");
+        Session session=sessionFactory.openSession();
+        session.beginTransaction();
+        session.persist(car);
+
+        session.getTransaction().commit();
+        session.close();
+        System.out.println(car.getId());
     }
 
 

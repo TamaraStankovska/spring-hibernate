@@ -58,10 +58,6 @@ public class WheelTests {
 	}
 
 
-	@Test
-	public void findAllWheels(){
-
-	}
 
 
 }
